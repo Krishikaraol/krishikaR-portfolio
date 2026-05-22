@@ -1,0 +1,122 @@
+<section class="contact-area page-section" id="contact">
+  <div class="custom-container">
+    <div class="content-width">
+
+      <span class="subtitle" data-aos="fade-up">
+        <i class="fa-solid fa-envelope"></i>
+        Contact
+      </span>
+
+      <div class="section-header" data-aos="fade-up" data-aos-delay="50">
+        <h2>Let's Work <span>Together!</span></h2>
+      </div>
+
+      <div class="contact-content" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Required note -->
+        <p class="required-msg" id="required-msg">
+          <span class="text-error">*</span> Marked fields are required to fill.
+        </p>
+
+        <!-- Success message -->
+        <div class="alert-msg success" *ngIf="status === 'success'">
+          <i class="fa-solid fa-circle-check"></i>
+          Your message was sent successfully! I'll get back to you soon.
+        </div>
+
+        <!-- Error message -->
+        <div class="alert-msg error" *ngIf="status === 'error'">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          Something went wrong. Please try again or email me directly.
+        </div>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form" id="contact-form" novalidate>
+
+          <div class="form-row">
+            <!-- Full Name -->
+            <div class="input-group">
+              <label for="fullName">Full Name <sup>*</sup></label>
+              <input
+                type="text"
+                id="fullName"
+                formControlName="fullName"
+                placeholder="John Doe"
+                [class.invalid]="f['fullName'].invalid && f['fullName'].touched"
+              />
+              <div class="field-line" [class.error-line]="f['fullName'].invalid && f['fullName'].touched"></div>
+              <span class="error-text" *ngIf="f['fullName'].invalid && f['fullName'].touched">
+                Please enter your full name.
+              </span>
+            </div>
+
+            <!-- Email -->
+            <div class="input-group">
+              <label for="email">Email <sup>*</sup></label>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                placeholder="john@example.com"
+                [class.invalid]="f['email'].invalid && f['email'].touched"
+              />
+              <div class="field-line" [class.error-line]="f['email'].invalid && f['email'].touched"></div>
+              <span class="error-text" *ngIf="f['email'].invalid && f['email'].touched">
+                Please enter a valid email address.
+              </span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <!-- Phone -->
+            <div class="input-group">
+              <label for="phone">Phone <span>(optional)</span></label>
+              <input type="tel" id="phone" formControlName="phone" placeholder="+91 XXXXX XXXXX" />
+              <div class="field-line"></div>
+            </div>
+
+            <!-- Budget -->
+            <div class="input-group">
+              <label for="budget">Your Budget <span>(optional)</span></label>
+              <input type="text" id="budget" formControlName="budget" placeholder="e.g. $500 - $1000" />
+              <div class="field-line"></div>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="input-group">
+            <label for="message">Message</label>
+            <textarea id="message" formControlName="message" placeholder="Tell me about your project..."></textarea>
+          </div>
+
+          <!-- File Attachment -->
+          <div class="input-group upload-attachment">
+            <label for="attachment">
+              <i class="fa-solid fa-paperclip"></i>
+              {{ selectedFileName || 'Add an attachment' }}
+              <input type="file" id="attachment" (change)="onFileChange($event)" accept="*/*" />
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="theme-btn"
+            id="submit-contact"
+            [disabled]="status === 'loading'"
+          >
+            <ng-container *ngIf="status !== 'loading'">
+              <i class="fa-solid fa-paper-plane"></i>
+              &nbsp;Send Message
+            </ng-container>
+            <ng-container *ngIf="status === 'loading'">
+              <i class="fa-solid fa-circle-notch fa-spin"></i>
+              &nbsp;Sending...
+            </ng-container>
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,204 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.portfolio-area {
+  padding-top: $section-padding;
+  padding-bottom: $section-padding;
+}
+
+// Filter tabs
+.filter-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+
+  button {
+    background: none;
+    border: 1px solid $border-color;
+    color: $text-secondary;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: $transition;
+    font-family: $font-body;
+
+    &:hover,
+    &.active {
+      background: $primary;
+      border-color: $primary;
+      color: #000;
+    }
+  }
+}
+
+// Portfolio grid
+.portfolio-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+
+  @include tablet { grid-template-columns: 1fr; }
+
+  .portfolio-item {
+    .portfolio-item-inner {
+      height: 300px;
+      overflow: hidden;
+      border-radius: $radius-lg;
+      position: relative;
+      margin-bottom: 20px;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        @include flex-center;
+        opacity: 0;
+        transition: $transition;
+        border-radius: $radius-lg;
+
+        i {
+          color: $primary;
+          font-size: 36px;
+          transform: scale(0.5);
+          transition: $transition;
+        }
+      }
+
+      &:hover img { transform: scale(1.05); }
+      &:hover .overlay {
+        opacity: 1;
+        i { transform: scale(1); }
+      }
+
+      .portfolio-categories {
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        bottom: 16px;
+        left: 16px;
+        z-index: 2;
+
+        li a {
+          display: block;
+          font-size: 13px;
+          background: #fff;
+          color: #000;
+          padding: 5px 16px;
+          border-radius: 20px;
+          transition: $transition;
+        }
+      }
+
+      &:hover .portfolio-categories li a {
+        background: $bg-body;
+        color: $text-primary;
+      }
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 300;
+      margin: 0;
+
+      a {
+        color: $text-primary;
+        display: inline-block;
+        border-bottom: 1px solid transparent;
+        transition: $transition;
+
+        &:hover { border-color: $text-primary; }
+      }
+    }
+  }
+}
+
+// Lightbox
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.85);
+  @include flex-center;
+  animation: fadeIn 0.2s ease;
+
+  .lightbox-inner {
+    background: #1a1a1a;
+    border: 1px solid $border-color;
+    border-radius: $radius-lg;
+    padding: 30px;
+    max-width: 800px;
+    width: 90%;
+    position: relative;
+    animation: scaleIn 0.25s ease;
+
+    img {
+      width: 100%;
+      border-radius: $radius-md;
+      margin-bottom: 20px;
+      object-fit: cover;
+      max-height: 450px;
+    }
+
+    h3 {
+      font-size: 22px;
+      color: $text-primary;
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      span {
+        font-size: 13px;
+        background: rgba(40, 233, 140, 0.15);
+        color: $primary;
+        padding: 4px 14px;
+        border-radius: 20px;
+        border: 1px solid rgba(40, 233, 140, 0.3);
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: 1px solid $border-color;
+      color: $text-primary;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      @include flex-center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: $transition;
+
+      &:hover { border-color: $primary; color: $primary; }
+    }
+  }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

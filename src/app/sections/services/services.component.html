@@ -1,0 +1,28 @@
+<section class="services-area page-section" id="services">
+  <div class="custom-container">
+    <div class="content-width">
+
+      <span class="subtitle" data-aos="fade-up">
+        <i class="fa-solid fa-briefcase"></i>
+        Services
+      </span>
+
+      <div class="services-items">
+        <div
+          class="service-item"
+          *ngFor="let service of services; let i = index"
+          [attr.data-aos]="'fade-up'"
+          [attr.data-aos-delay]="i * 80"
+        >
+          <i [class]="service.icon"></i>
+          <h3>
+            <a href="#">{{ service.title }}</a>
+          </h3>
+          <p>{{ service.description }}</p>
+          <span class="projects">Learn More &rarr;</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

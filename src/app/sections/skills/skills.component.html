@@ -1,0 +1,24 @@
+<section class="skills-area page-section" id="skills">
+  <div class="custom-container">
+    <div class="content-width">
+
+      <span class="subtitle" data-aos="fade-up">
+        <i class="fa-solid fa-chart-bar"></i>
+        My Skills
+      </span>
+
+      <div class="skills" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-grid">
+          <div class="skill" *ngFor="let skill of skills; let i = index">
+            <div class="skill-inner">
+              <i [class]="skill.icon"></i>
+              <h2>{{ skill.percentage }}%</h2>
+            </div>
+            <p>{{ skill.name }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

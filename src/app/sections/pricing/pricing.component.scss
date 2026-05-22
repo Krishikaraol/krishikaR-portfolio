@@ -1,0 +1,128 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.pricing-area {
+  padding-top: $section-padding;
+  padding-bottom: $section-padding;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 0;
+
+  @include tablet { grid-template-columns: 1fr; }
+}
+
+.pricing-table {
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  padding: 37px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: $transition;
+  position: relative;
+
+  &:hover { border-color: $primary; }
+
+  &.featured {
+    border-color: $primary;
+    background: rgba(40, 233, 140, 0.03);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $primary;
+    color: #000;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 20px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+
+    i { margin-right: 4px; }
+  }
+
+  .pricing-table-header {
+    border-bottom: 1px solid #555;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+
+    .top {
+      margin-bottom: 20px;
+
+      h4 {
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: 300;
+        color: $text-primary;
+        margin: 0 0 6px;
+        letter-spacing: 1px;
+      }
+
+      p {
+        font-size: 13px;
+        line-height: 1.5;
+        color: $text-secondary;
+        margin: 0;
+      }
+    }
+
+    h2 {
+      font-size: 46px;
+      color: $primary;
+      font-weight: 300;
+      margin: 0;
+      line-height: 1;
+
+      span {
+        font-size: 22px;
+        color: $text-secondary;
+      }
+    }
+  }
+
+  ul {
+    margin-bottom: 40px;
+    flex: 1;
+
+    li {
+      font-size: 14px;
+      color: $text-primary;
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &:last-child { margin-bottom: 0; }
+
+      i {
+        color: $primary;
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .theme-btn { width: 100%; }
+}
+
+.pricing-table-items .info {
+  font-size: 14px;
+  color: $text-primary;
+  line-height: 1.7;
+  margin: 50px 0 0;
+
+  a {
+    color: $primary;
+    text-decoration: underline;
+  }
+}

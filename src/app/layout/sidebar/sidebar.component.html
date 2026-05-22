@@ -1,0 +1,94 @@
+<!-- Mobile hamburger button -->
+<div class="icon-menu" (click)="toggleMenu()" id="hamburger-btn">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Mobile overlay menu -->
+<div class="responsive-sidebar-menu" [class.active]="isMenuOpen">
+  <div class="overlay" (click)="closeMenu()"></div>
+  <div class="sidebar-menu-inner">
+    <div class="menu-wrap">
+      <p class="text-white mb-4">Menu</p>
+      <ul class="dmenu">
+        <li *ngFor="let item of navItems">
+          <a
+            [class.active]="activeSection === item.id"
+            (click)="scrollTo(item.id)"
+            style="cursor:pointer; display:flex; align-items:center; gap:10px;"
+          >
+            <i [class]="item.icon"></i>
+            <span>{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-social mt-4">
+        <ul style="display:flex; gap:15px; flex-wrap:wrap;">
+          <li *ngFor="let link of socialLinks">
+            <a [href]="link.url" [title]="link.label" target="_blank">
+              <i [class]="link.icon"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Desktop Left Sidebar -->
+<div class="left-sidebar" id="left-sidebar">
+  <!-- Profile Photo -->
+  <img
+    src="assets/images/profile.jpeg"
+    alt="Krishika Raol - Frontend Developer"
+    class="me"
+  />
+
+  <!-- Profile Info -->
+  <div class="sidebar-header">
+    <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+      <h3>Krishika Raol</h3>
+      <div class="designation">Frontend Developer</div>
+    </div>
+  </div>
+
+  <!-- Address & Copyright -->
+  <div class="address">
+    <p style="font-size:14px; text-align:center;">Based in Ahmedabad, Gujarat, India</p>
+  </div>
+  <div class="copyright">
+    <p>© {{ currentYear }} Krishika. All Rights Reserved</p>
+  </div>
+
+  <!-- Social Icons -->
+  <ul class="social-profile d-flex justify-content-center">
+    <li *ngFor="let link of socialLinks">
+      <a [href]="link.url" [title]="link.label" target="_blank">
+        <i [class]="link.icon"></i>
+      </a>
+    </li>
+  </ul>
+
+  <!-- Hire Me CTA -->
+  <a (click)="scrollTo('contact')" class="theme-btn" style="cursor:pointer; width:100%; display:flex; justify-content:center;">
+    <i class="fa-solid fa-paper-plane me-2"></i>
+    Hire Me!
+  </a>
+</div>
+
+<!-- Right icon nav (desktop) -->
+<nav class="dmenu d-flex" id="desktop-nav" aria-label="Portfolio navigation">
+  <li *ngFor="let item of navItems">
+    <a
+      [class.active]="activeSection === item.id"
+      (click)="scrollTo(item.id)"
+      style="cursor:pointer;"
+      [title]="item.label"
+    >
+      <i [class]="item.icon"></i>
+      <span>{{ item.label }}</span>
+    </a>
+  </li>
+</nav>

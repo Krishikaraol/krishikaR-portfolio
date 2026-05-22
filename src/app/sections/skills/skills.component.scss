@@ -1,0 +1,73 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.skills-area {
+  padding-top: $section-padding;
+  padding-bottom: 40px;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  @include tablet { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr 1fr; gap: 12px; }
+}
+
+.skills .skill {
+  margin-bottom: 30px;
+  text-align: center;
+
+  .skill-inner {
+    border: 2px solid $border-color;
+    border-radius: 85px;
+    padding: 44px 20px 38px;
+    margin-bottom: 16px;
+    transition: $transition;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 85px;
+      background: linear-gradient(135deg, rgba(40, 233, 140, 0.05), transparent);
+      opacity: 0;
+      transition: $transition;
+    }
+
+    i {
+      font-size: 36px;
+      color: $primary;
+      display: block;
+      margin: 0 auto 20px;
+      transition: $transition;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: $primary;
+      font-weight: 300;
+      margin: 0;
+      line-height: 1;
+    }
+  }
+
+  &:hover .skill-inner,
+  &.animated .skill-inner {
+    border-color: $primary;
+
+    &::before { opacity: 1; }
+
+    i { transform: scale(1.15); }
+  }
+
+  p {
+    font-size: 14px;
+    color: $text-primary;
+    margin: 0;
+    font-weight: 400;
+  }
+}

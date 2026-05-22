@@ -1,0 +1,158 @@
+/* ==========================================
+   Global Styles — BuildwithKrishika Portfolio
+   ========================================== */
+
+@use 'styles/variables' as *;
+@use 'styles/animations';
+@use 'styles/mixins' as *;
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Font Awesome CDN (loaded via index.html) */
+
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: $font-body;
+  font-size: 16px;
+  color: $text-secondary;
+  background: $bg-body;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: $primary;
+  transition: $transition;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: $bg-body; }
+::-webkit-scrollbar-thumb {
+  background: $border-color;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: $primary; }
+
+/* Global Utilities */
+.theme-btn {
+  @include btn-primary;
+}
+
+.content-width {
+  max-width: 770px;
+  width: 100%;
+  margin-left: auto;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: $text-primary;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin: 0;
+  border: 1px solid $border-color;
+  padding: 9px 20px;
+  border-radius: 30px;
+  margin-bottom: 53px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  i {
+    font-size: 14px;
+    margin-bottom: 1px;
+  }
+}
+
+.section-header h2 {
+  font-size: 48px;
+  line-height: 60px;
+  color: $text-primary;
+  font-weight: 300;
+  margin-bottom: 33px;
+
+  span {
+    color: $primary;
+  }
+}
+
+.custom-container {
+  max-width: 1130px;
+  padding: 0 15px;
+  margin: auto;
+}
+
+/* Page Loader */
+.page-loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .bounceball {
+    position: relative;
+    display: inline-block;
+    height: 37px;
+    width: 15px;
+
+    &::before {
+      position: absolute;
+      content: '';
+      display: block;
+      top: 0;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: $primary;
+      transform-origin: 50%;
+      animation: bounceLoader 500ms alternate infinite ease;
+    }
+  }
+}
+
+/* AOS overrides */
+[data-aos] {
+  pointer-events: none;
+  &.aos-animate {
+    pointer-events: auto;
+  }
+}

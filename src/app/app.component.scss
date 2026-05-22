@@ -1,0 +1,20 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+// Main content area — offset from left sidebar
+.main-content {
+  margin-left: 390px;   // sidebar width + gap
+  margin-right: 120px;  // right nav width + gap
+  min-height: 100vh;
+
+  // Tablet - no sidebar
+  @include laptop {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 20px;
+  }
+
+  @include mobile {
+    padding: 0 16px;
+  }
+}

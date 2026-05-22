@@ -1,0 +1,58 @@
+<section class="portfolio-area page-section" id="portfolio">
+  <div class="custom-container">
+    <div class="content-width">
+
+      <span class="subtitle" data-aos="fade-up">
+        <i class="fa-solid fa-grid-2"></i>
+        Portfolio
+      </span>
+
+      <div class="section-header" data-aos="fade-up" data-aos-delay="50">
+        <h2>Featured <span>Projects</span></h2>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs" data-aos="fade-up" data-aos-delay="100">
+        <button
+          *ngFor="let f of filters"
+          [class.active]="activeFilter === f"
+          (click)="applyFilter(f)"
+          id="filter-{{ f | lowercase }}"
+        >{{ f }}</button>
+      </div>
+
+      <!-- Project Grid -->
+      <div class="portfolio-items" data-aos="fade-up" data-aos-delay="150">
+        <div class="portfolio-item" *ngFor="let project of filteredProjects; let i = index">
+          <div class="portfolio-item-inner" (click)="openLightbox(project)">
+            <img [src]="project.image" [alt]="project.title" loading="lazy" />
+            <div class="overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </div>
+            <ul class="portfolio-categories">
+              <li *ngFor="let tag of project.tags">
+                <a href="#">{{ tag }}</a>
+              </li>
+            </ul>
+          </div>
+          <h3><a href="#">{{ project.title }}</a></h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" *ngIf="lightboxProject" (click)="closeLightbox()">
+  <div class="lightbox-inner" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeLightbox()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img [src]="lightboxProject.image" [alt]="lightboxProject.title" />
+    <h3>{{ lightboxProject.title }}</h3>
+    <div class="tags">
+      <span *ngFor="let tag of lightboxProject.tags">{{ tag }}</span>
+    </div>
+  </div>
+</div>

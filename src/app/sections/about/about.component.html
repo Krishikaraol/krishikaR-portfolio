@@ -1,0 +1,47 @@
+<section class="about-area page-section" id="about">
+  <div class="custom-container">
+    <div class="content-width">
+
+      <span class="subtitle" data-aos="fade-up">
+        <i class="fa-solid fa-user"></i>
+        About
+      </span>
+
+      <div class="about-content" data-aos="fade-up" data-aos-delay="100">
+        <div class="section-header">
+          <h2>Frontend Developer | Angular Developer | <span>MEAN Stack Enthusiast</span></h2>
+        </div>
+
+        <p>
+          I am Krishika Raol, a Frontend Developer specializing in Angular and modern web technologies.
+          I recently worked at Artem HealthTech after completing my internship there, where I contributed
+          to production-level applications and client websites.
+        </p>
+        <p style="margin-top: 16px;">
+          My experience includes building responsive interfaces, implementing secure authentication features
+          such as OTP-based login and password recovery, optimizing Angular applications using RxJS operators
+          like <code>finalize</code> and <code>takeUntil</code> to prevent memory leaks, and improving overall application performance.
+        </p>
+        <p style="margin-top: 16px; margin-bottom: 40px;">
+          I enjoy creating scalable and user-friendly digital experiences while continuously learning new
+          technologies such as AI integration, MEAN stack development, and advanced frontend architecture.
+        </p>
+
+        <!-- Personal Info Table -->
+        <div class="personal-info" data-aos="fade-up" data-aos-delay="200">
+          <div class="info-item" *ngFor="let info of personalInfo">
+            <span class="label">{{ info.label }}</span>
+            <span class="value">{{ info.value }}</span>
+          </div>
+        </div>
+
+        <!-- Download Resume -->
+        <button class="theme-btn mt-5" (click)="downloadResume()" data-aos="fade-up" data-aos-delay="300">
+          <i class="fa-solid fa-download"></i>
+          &nbsp;Download Resume
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>

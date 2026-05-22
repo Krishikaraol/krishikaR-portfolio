@@ -1,0 +1,49 @@
+// ==========================================
+// Design Tokens — Drake Theme (Exact Match)
+// ==========================================
+
+// Primary accent (Drake green)
+$primary: #28e98c;
+
+// Backgrounds
+$bg-body: #1f1f1f;
+$bg-dark: #000000;
+$bg-sidebar: #191919;
+$bg-card: #1f1f1f;
+
+// Borders
+$border-color: #565656;
+$border-color-light: #333333;
+
+// Text
+$text-primary: #ffffff;
+$text-secondary: #999999;
+$text-muted: #666666;
+$text-error: #fc4545;
+
+// Fonts
+$font-body: 'Inter', sans-serif;
+$font-heading: 'Inter', sans-serif;
+
+// Spacing scale
+$section-padding: 90px;
+
+// Breakpoints
+$bp-mobile: 575px;
+$bp-tablet: 768px;
+$bp-laptop: 1024px;
+$bp-desktop: 1200px;
+$bp-wide: 1400px;
+
+// Sidebar width
+$sidebar-width: 330px;
+$sidebar-gap: 20px;
+
+// Border radius
+$radius-sm: 10px;
+$radius-md: 20px;
+$radius-lg: 30px;
+$radius-pill: 50px;
+
+// Transition
+$transition: all 0.3s ease;

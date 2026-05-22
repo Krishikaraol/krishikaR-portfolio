@@ -1,0 +1,323 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+// =====================
+// Desktop Left Sidebar
+// =====================
+.left-sidebar {
+  max-width: 330px;
+  width: 100%;
+  border-radius: $radius-lg;
+  border: 1px solid $border-color;
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 40px 36px;
+  z-index: 10;
+  background: $bg-body;
+  overflow-y: auto;
+  max-height: calc(100vh - 40px);
+  @include custom-scrollbar;
+
+  @include laptop {
+    display: none;
+  }
+
+  img.me {
+    border-radius: $radius-lg;
+    display: block;
+    margin-bottom: 40px;
+    width: 100%;
+    object-fit: cover;
+    max-height: 220px;
+  }
+
+  .sidebar-header {
+    margin-bottom: 28px;
+
+    h3 {
+      font-size: 22px;
+      color: $text-primary;
+      font-weight: 400;
+    }
+
+    .designation {
+      font-size: 12px;
+      color: $primary;
+      text-align: right;
+      font-weight: 400;
+      border: 1px solid $primary;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+  }
+
+  .address {
+    margin-bottom: 8px;
+    p { font-size: 13px; color: $text-secondary; }
+  }
+
+  .copyright {
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 28px;
+    color: $text-muted;
+  }
+
+  .social-profile {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+
+    li a {
+      display: block;
+      width: 44px;
+      height: 44px;
+      line-height: 40px;
+      text-align: center;
+      border: 2px solid $border-color;
+      border-radius: 50%;
+      color: $text-secondary;
+      font-size: 17px;
+      transition: $transition;
+
+      &:hover {
+        color: $primary;
+        border-color: $primary;
+      }
+    }
+  }
+
+  .theme-btn {
+    @include btn-primary;
+    width: 100%;
+
+    i { margin-right: 8px; }
+  }
+}
+
+// =======================
+// Desktop Right Icon Nav
+// =======================
+.dmenu {
+  flex-direction: column;
+  border: 1px solid $border-color;
+  border-radius: 30px;
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  gap: 18px;
+  padding: 22px 0;
+  background: $bg-body;
+  z-index: 20;
+  display: flex;
+
+  @include laptop {
+    display: none !important;
+  }
+
+  li {
+    list-style: none;
+
+    a {
+      display: block;
+      position: relative;
+      width: 55px;
+      transition: $transition;
+      color: $text-secondary;
+      cursor: pointer;
+
+      &.active,
+      &:hover {
+        color: $primary;
+      }
+
+      &:hover span,
+      &.active span {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      i {
+        font-size: 20px;
+        display: block;
+      }
+
+      span {
+        position: absolute;
+        transition: $transition;
+        font-size: 12px;
+        background: #404042;
+        right: 100%;
+        color: #fff;
+        display: block;
+        padding: 3px 10px;
+        border-radius: 5px;
+        visibility: hidden;
+        opacity: 0;
+        white-space: nowrap;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 8px;
+
+        &::after {
+          content: '';
+          width: 8px;
+          height: 8px;
+          background: #404042;
+          position: absolute;
+          right: -3px;
+          top: 50%;
+          transform: translateY(-50%) rotate(45deg);
+          z-index: -1;
+        }
+      }
+    }
+  }
+}
+
+// ==========================
+// Mobile Hamburger Icon
+// ==========================
+.icon-menu {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: none;
+  flex-direction: column;
+  border: 1px solid $border-color;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: $transition;
+  background: $bg-body;
+  z-index: 99;
+
+  @include laptop {
+    display: flex;
+  }
+
+  span {
+    width: 20px;
+    display: block;
+    height: 2px;
+    background: #fff;
+    transition: $transition;
+  }
+
+  &:hover {
+    border-color: $primary;
+    span { background: $primary; }
+  }
+}
+
+// ==========================
+// Mobile Responsive Menu
+// ==========================
+.responsive-sidebar-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #565656;
+    opacity: 0.5;
+  }
+
+  .sidebar-menu-inner {
+    max-width: 300px;
+    width: 100%;
+    margin-left: auto;
+    background: #191919;
+    height: 100%;
+    overflow-y: auto;
+    padding: 50px 30px;
+    margin-right: -300px;
+    transition: 0.3s;
+
+    p { color: #fff; font-size: 16px; }
+  }
+
+  &.active .sidebar-menu-inner {
+    margin-right: 0;
+  }
+
+  // Override dmenu inside mobile menu
+  .dmenu {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    padding: 0 !important;
+    margin-bottom: 30px;
+
+    li a {
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      width: auto;
+
+      span {
+        position: relative !important;
+        right: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        color: $text-secondary;
+        background: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        font-size: 14px;
+
+        &::after { display: none; }
+      }
+
+      &.active span { color: #fff; }
+    }
+  }
+
+  .sidebar-social {
+    ul {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+
+      li a {
+        color: $text-secondary;
+        font-size: 18px;
+        transition: $transition;
+        &:hover { color: $primary; }
+      }
+    }
+  }
+}

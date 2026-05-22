@@ -1,0 +1,158 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.contact-area {
+  padding-bottom: 60px;
+  padding-top: $section-padding;
+}
+
+.contact-content {
+  .required-msg {
+    color: $text-secondary;
+    font-size: 14px;
+    margin-bottom: 32px;
+
+    .text-error { color: $text-error; }
+  }
+}
+
+// Alert messages
+.alert-msg {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: $radius-md;
+  margin-bottom: 28px;
+  font-size: 14px;
+
+  i { font-size: 18px; }
+
+  &.success {
+    background: rgba(40, 233, 140, 0.1);
+    border: 1px solid rgba(40, 233, 140, 0.3);
+    color: $primary;
+  }
+
+  &.error {
+    background: rgba(252, 69, 69, 0.1);
+    border: 1px solid rgba(252, 69, 69, 0.3);
+    color: $text-error;
+  }
+}
+
+// Form layout
+.contact-form {
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
+
+    @include tablet { grid-template-columns: 1fr; }
+  }
+
+  .input-group {
+    margin-bottom: 30px;
+    position: relative;
+
+    label {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: $text-primary;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+
+      sup {
+        color: $text-error;
+        font-size: 12px;
+        top: 0;
+      }
+
+      span {
+        color: $text-secondary;
+        text-transform: none;
+        font-size: 11px;
+      }
+    }
+
+    input, textarea {
+      display: block;
+      color: $text-primary;
+      width: 100%;
+      border: none;
+      background: none;
+      font-size: 17px;
+      padding: 0;
+      transition: 0.2s;
+      padding-bottom: 4px;
+      font-family: $font-body;
+
+      &::placeholder { color: $text-muted; }
+      &:focus { outline: none; }
+    }
+
+    textarea {
+      height: 140px;
+      resize: none;
+    }
+
+    .field-line {
+      height: 1px;
+      background: #555;
+      transition: $transition;
+      margin-top: 4px;
+
+      &.error-line { background: $text-error; }
+    }
+
+    &:focus-within .field-line { background: $primary; }
+
+    .error-text {
+      display: block;
+      font-size: 12px;
+      color: $text-error;
+      margin-top: 5px;
+    }
+
+    // File upload
+    &.upload-attachment {
+      label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        text-transform: none;
+        color: $text-secondary;
+        transition: $transition;
+        overflow: hidden;
+
+        &:hover { color: $primary; }
+
+        i { font-size: 16px; }
+
+        input[type="file"] {
+          position: absolute;
+          left: 0;
+          top: 0;
+          opacity: 0;
+          width: 0;
+          height: 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .theme-btn {
+    margin-top: 16px;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    i { font-size: 16px; }
+  }
+}

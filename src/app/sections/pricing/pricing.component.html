@@ -1,0 +1,58 @@
+<section class="pricing-area page-section" id="pricing">
+  <div class="custom-container">
+    <div class="content-width">
+
+      <span class="subtitle" data-aos="fade-up">
+        <i class="fa-solid fa-tag"></i>
+        Pricing
+      </span>
+
+      <div class="section-header" data-aos="fade-up" data-aos-delay="50">
+        <h2>My <span>Pricing</span></h2>
+      </div>
+
+      <div class="pricing-table-items" data-aos="fade-up" data-aos-delay="100">
+        <div class="plans-grid">
+          <div
+            class="pricing-table"
+            *ngFor="let plan of plans; let i = index"
+            [class.featured]="plan.isFeatured"
+            [attr.data-aos]="'fade-up'"
+            [attr.data-aos-delay]="i * 100 + 100"
+          >
+            <!-- Badge -->
+            <div class="featured-badge" *ngIf="plan.isFeatured">
+              <i class="fa-solid fa-star"></i> Most Popular
+            </div>
+
+            <div class="pricing-table-header">
+              <div class="top">
+                <h4>{{ plan.tier }}</h4>
+                <p>{{ plan.tagline }}</p>
+              </div>
+              <h2>{{ plan.price }} <span>{{ plan.unit }}</span></h2>
+            </div>
+
+            <ul>
+              <li *ngFor="let feature of plan.features">
+                <i class="fa-solid fa-check"></i>
+                {{ feature }}
+              </li>
+            </ul>
+
+            <button class="theme-btn" (click)="scrollToContact()" [id]="'plan-' + plan.tier.toLowerCase()">
+              Pick This Package
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom package -->
+        <p class="info" data-aos="fade-up" data-aos-delay="300">
+          Don't find any package match with your plan! Want to setup a new tailor-made package for only you?.
+          <a (click)="scrollToContact()" style="cursor:pointer;">Contact Us</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

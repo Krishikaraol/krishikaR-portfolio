@@ -1,0 +1,95 @@
+// ==========================================
+// Mixins — Reusable Helpers
+// ==========================================
+@use 'variables' as *;
+
+// Flexbox
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Glass card (glazed dark card)
+@mixin glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  backdrop-filter: blur(10px);
+}
+
+// Gradient text
+@mixin gradient-text {
+  background: linear-gradient(135deg, $primary, lighten($primary, 20%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Section base
+@mixin section-base {
+  padding-top: $section-padding;
+  padding-bottom: $section-padding;
+}
+
+// Hover lift
+@mixin hover-lift($amount: -6px) {
+  transition: $transition;
+  &:hover {
+    transform: translateY($amount);
+  }
+}
+
+// Primary button
+@mixin btn-primary {
+  background: $primary;
+  color: #000;
+  padding: 11px 58px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  text-transform: uppercase;
+  border: 2px solid $primary;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    background: transparent;
+    color: $primary;
+  }
+}
+
+// Responsive helpers
+@mixin mobile {
+  @media (max-width: #{$bp-mobile}) { @content; }
+}
+
+@mixin tablet {
+  @media (max-width: #{$bp-tablet}) { @content; }
+}
+
+@mixin laptop {
+  @media (max-width: #{$bp-laptop}) { @content; }
+}
+
+// Scrollbar
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-track { background: $bg-body; }
+  &::-webkit-scrollbar-thumb {
+    background: $border-color;
+    border-radius: 2px;
+    &:hover { background: $primary; }
+  }
+}

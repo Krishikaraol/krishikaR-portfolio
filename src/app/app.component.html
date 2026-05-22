@@ -1,0 +1,19 @@
+<!-- Page Loader -->
+<div class="page-loader" [class.hide]="!isLoading" id="page-loader">
+  <div class="bounceball"></div>
+</div>
+
+<!-- Sidebar (contains desktop sidebar card + desktop icon nav + mobile menu) -->
+<app-sidebar></app-sidebar>
+
+<!-- Main Content Area -->
+<main class="main-content" role="main">
+  <app-home></app-home>
+  <app-about></app-about>
+  <app-resume></app-resume>
+  <app-services></app-services>
+  <app-skills></app-skills>
+  <app-portfolio></app-portfolio>
+  <app-pricing></app-pricing>
+  <app-contact></app-contact>
+</main>

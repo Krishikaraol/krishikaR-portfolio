@@ -1,0 +1,58 @@
+<section class="resume-area page-section" id="resume">
+  <div class="custom-container">
+    <div class="content-width">
+
+      <span class="subtitle" data-aos="fade-up">
+        <i class="fa-solid fa-file-lines"></i>
+        Resume
+      </span>
+
+      <div class="row" style="display:grid; grid-template-columns:1fr 1fr; gap:40px;" data-aos="fade-up" data-aos-delay="100">
+        <!-- Experience -->
+        <div class="resume-col">
+          <h3 class="col-title">
+            <i class="fa-solid fa-briefcase"></i>
+            Experience
+          </h3>
+          <div class="resume-timeline">
+            <div class="item" *ngFor="let item of experience; let i = index"
+              [attr.data-aos]="'fade-up'"
+              [attr.data-aos-delay]="(i * 100) + 150"
+            >
+              <span class="date">{{ item.period }}</span>
+              <h3>{{ item.title }}</h3>
+              <p class="company">
+                <i class="fa-solid fa-building"></i>
+                {{ item.company }}
+              </p>
+              <p>{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="resume-col">
+          <h3 class="col-title">
+            <i class="fa-solid fa-graduation-cap"></i>
+            Education
+          </h3>
+          <div class="resume-timeline">
+            <div class="item" *ngFor="let item of education; let i = index"
+              [attr.data-aos]="'fade-up'"
+              [attr.data-aos-delay]="(i * 100) + 150"
+            >
+              <span class="date">{{ item.period }}</span>
+              <h3>{{ item.title }}</h3>
+              <p class="company">
+                <i class="fa-solid fa-university"></i>
+                {{ item.company }}
+              </p>
+              <p>{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
