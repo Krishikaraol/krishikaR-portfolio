@@ -35,7 +35,6 @@ export class HomeComponent implements AfterViewInit {
         'Frontend Developer',
         'Angular Developer',
         'MEAN Stack Enthusiast',
-        'UI/UX Implementor'
       ],
       typeSpeed: 60,
       backSpeed: 40,
