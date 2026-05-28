@@ -67,17 +67,38 @@
 
 // Stats / Facts row
 .facts {
-  gap: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
   flex-wrap: wrap;
 
-  @include mobile { gap: 30px; }
+  @include mobile { gap: 0; }
 
   .fact-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+      margin-right: 0;
+    }
+
+    @include mobile {
+      padding: 0 20px;
+      &:first-child { padding-left: 0; }
+    }
+
     h2.stat-value {
       font-size: 60px;
       color: $primary;
       line-height: 1;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       font-weight: 300;
 
       @include mobile { font-size: 42px; }
@@ -89,7 +110,7 @@
       text-transform: uppercase;
       color: $text-secondary;
       white-space: pre-line;
-      max-width: 100px;
+      max-width: 120px;
     }
   }
 }

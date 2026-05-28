@@ -2,17 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import emailjs from '@emailjs/browser';
-
-// ========================================================
-// IMPORTANT: Replace these with your actual EmailJS values
-// 1. Sign up at https://www.emailjs.com/
-// 2. Create a service (Gmail/Outlook) → get SERVICE_ID
-// 3. Create an email template → get TEMPLATE_ID
-// 4. Get your PUBLIC_KEY from Account > API Keys
-// ========================================================
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -29,7 +19,7 @@ export class ContactComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
+    emailjs.init(environment.emailjs.publicKey);
 
     this.contactForm = this.fb.group({
       fullName: ['', [Validators.required, Validators.minLength(2)]],
@@ -67,7 +57,7 @@ export class ContactComponent implements OnInit {
     };
 
     try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      await emailjs.send(environment.emailjs.serviceId, environment.emailjs.templateId, templateParams);
       this.status = 'success';
       this.contactForm.reset();
       this.selectedFileName = '';
